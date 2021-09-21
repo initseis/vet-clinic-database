@@ -9,10 +9,6 @@ SELECT * FROM animals WHERE neutered = true;
 SELECT * FROM animals WHERE name != 'Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
---Add a column species of type string to your animals table.
-ALTER TABLE animals
-ADD COLUMN species varchar(100);
-
 
 --Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made. Then roll back the change and verify that species columns went back to the state before tranasction.
 BEGIN;
