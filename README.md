@@ -18,6 +18,9 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 - Create tables in SQL.
 - Insert and query data in SQL.
+- Use database transactions.
+- Modify and delete data in SQL.
+- Prepare complex queries that answer analytical questions.
 
 ## Authors
 
