@@ -75,3 +75,14 @@ SELECT AVG(weight_kg) AS average_weight FROM animals;
 SELECT neutered, SUM(escape_attempts) AS escape_count FROM animals GROUP BY neutered;
 SELECT species, MIN(weight_kg), MAX(weight_kg)  FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '01-01-1990' AND '12-31-2000' GROUP BY species;
+
+
+--## Vet clinic database: query multiple tables
+
+select a.name from animals a inner join owners o on a.owner_id = o.id and o.full_name = 'Melody Pond';
+select a.name from animals a inner join species e on a.species_id = e.id and e.name = 'Pokemon';
+select o.full_name owner_name, a.name animal_name from animals a right join owners o on a.owner_id = o.id or (o.id is null);
+select e.name, count(a.species_id) from animals a inner join species e on a.species_id = e.id group by e.name;
+select a.name from animals a inner join owners o on a.owner_id = o.id inner join species e on a.species_id = e.id and o.full_name = 'Jennifer Orwell' and e.name = 'Digimon';
+select a.name from animals a inner join owners o on a.owner_id = o.id and o.full_name = 'Dean Winchester' and a.escape_attempts = 0;
+select full_name, max(animals_quantity) from (select o.full_name, count(a.owner_id) animals_quantity from animals a inner join owners o on a.owner_id = o.id group by o.full_name) as a group by full_name order by max desc limit 1;
