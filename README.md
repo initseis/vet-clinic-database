@@ -21,6 +21,9 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Use database transactions.
 - Modify and delete data in SQL.
 - Prepare complex queries that answer analytical questions.
+- Use primary key & foreign key mechanism for joining tables.
+- Query multiple tables.
+- Prepare complex queries that answer analytical questions.
 
 ## Authors
 
