@@ -86,3 +86,17 @@ select e.name, count(a.species_id) from animals a inner join species e on a.spec
 select a.name from animals a inner join owners o on a.owner_id = o.id inner join species e on a.species_id = e.id and o.full_name = 'Jennifer Orwell' and e.name = 'Digimon';
 select a.name from animals a inner join owners o on a.owner_id = o.id and o.full_name = 'Dean Winchester' and a.escape_attempts = 0;
 select full_name, max(animals_quantity) from (select o.full_name, count(a.owner_id) animals_quantity from animals a inner join owners o on a.owner_id = o.id group by o.full_name) as a group by full_name order by max desc limit 1;
+
+
+
+
+--## Vet clinic database: add "join table" for visits
+select animal_name from (select a.name animal_name, ve.name, v.visit_date from animals a inner join visits v on a.id = v.animals_id inner join vets ve on v.vets_id = ve.id and ve.name = 'William Tatcher' order by v.visit_date desc limit 1) as r;
+select count(distinct a.name) seen_animals from animals a inner join visits v on a.id = v.animals_id inner join vets ve on v.vets_id = ve.id and ve.name = 'Stephanie Mendez';
+select ve.name vet_name, spe.name vet_specialization from vets ve left join specializations s on ve.id = s.vets_id left join species spe on s.species_id = spe.id;
+select a.name animal_name from animals a inner join visits v on a.id = v.animals_id inner join vets ve on v.vets_id = ve.id and ve.name = 'Stephanie Mendez' and (v.visit_date between '04-01-2020' and '08-30-2020');
+select most_visits from (select a.name most_visits, count(a.name) from animals a inner join visits v on a.id = v.animals_id group by a.name order by count desc limit 1) as r;
+select a.name Maisy_first_visit from animals a inner join visits v on a.id = v.animals_id inner join vets ve on v.vets_id = ve.id and ve.name = 'Maisy Smith' order by v.visit_date asc limit 1;
+select a.name, ve.name, v.visit_date from animals a inner join visits v on a.id = v.animals_id inner join vets ve on v.vets_id = ve.id order by v.visit_date desc limit 1;
+select (select count(visit_date) from visits)-count(visit_date) from visits v inner join animals a on v.animals_id = a.id inner join species spe on a.species_id = spe.id inner join vets ve on v.vets_id = ve.id inner join (select ve.name vet_name, spe.name species_name from vets ve left join specializations s on s.vets_id = ve.id left join species spe on s.species_id = spe.id) as r on ve.name = r.vet_name where spe.name = r.species_name;
+select s.name from vets ve inner join visits v on ve.id = v.vets_id inner join animals a on v.animals_id = a.id inner join species s on a.species_id = s.id and ve.name = 'Maisy Smith' group by s.name order by count(s.name) desc limit 1;
