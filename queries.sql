@@ -102,3 +102,7 @@ select (select count(visit_date) from visits)-count(visit_date) from visits v in
 select s.name from vets ve inner join visits v on ve.id = v.vets_id inner join animals a on v.animals_id = a.id inner join species s on a.species_id = s.id and ve.name = 'Maisy Smith' group by s.name order by count(s.name) desc limit 1;
 
 --##
+
+SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;
+SELECT * FROM owners where email = 'owner_18327@mail.com';
