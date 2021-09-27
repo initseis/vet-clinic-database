@@ -100,3 +100,9 @@ select a.name Maisy_first_visit from animals a inner join visits v on a.id = v.a
 select a.name, ve.name, v.visit_date from animals a inner join visits v on a.id = v.animals_id inner join vets ve on v.vets_id = ve.id order by v.visit_date desc limit 1;
 select (select count(visit_date) from visits)-count(visit_date) from visits v inner join animals a on v.animals_id = a.id inner join species spe on a.species_id = spe.id inner join vets ve on v.vets_id = ve.id inner join (select ve.name vet_name, spe.name species_name from vets ve left join specializations s on s.vets_id = ve.id left join species spe on s.species_id = spe.id) as r on ve.name = r.vet_name where spe.name = r.species_name;
 select s.name from vets ve inner join visits v on ve.id = v.vets_id inner join animals a on v.animals_id = a.id inner join species s on a.species_id = s.id and ve.name = 'Maisy Smith' group by s.name order by count(s.name) desc limit 1;
+
+--##
+
+SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;
+SELECT * FROM owners where email = 'owner_18327@mail.com';
