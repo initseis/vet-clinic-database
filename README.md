@@ -2,6 +2,8 @@
 
 Database for a Vet Clinic.
 
+![imagen](https://user-images.githubusercontent.com/39852288/135161263-30258914-b6d3-46e9-8020-d0881f792013.png)
+
 ## Built With
 
 - PostgreSQL
