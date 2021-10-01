@@ -77,3 +77,7 @@ create table visits(
 	foreign key (vets_id) references vets(id),
 	foreign key (animals_id) references animals(id)	
 );
+
+create index visits_animals_id_asc on visits(animals_id asc);
+create index visits_vets_id_asc on visits(vets_id asc);
+create index owners_email_asc on owners(email asc);
